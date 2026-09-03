@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Religião</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800;6..96,900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --vermelho-principal:#FF292E;
+    --vermelho-escuro:#B5121B;
+    --vinho:#6E0E14;
+    --vermelho-claro:#FF6B6B;
+    --preto:#000;
+    --creme:#FF6B6B;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Montserrat",sans-serif;
+    background:var(--creme);
+    color:var(--preto);
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background:var(--vermelho-principal);
+    z-index:1000;
+    opacity:0;
+    transform:translateY(-100%);
+    pointer-events:none;
+    transition:opacity .5s ease,transform .5s ease;
+}
+
+.menu.aparecer{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+.menu ul{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:55px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:var(--preto);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    transition:opacity .3s ease;
+}
+
+.menu a:hover{
+    opacity:.5;
+}
+
+/* =========================
+   INÍCIO
+========================= */
+
+.inicio{
+    width:100%;
+    height:100vh;
+    background:var(--vermelho-principal);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.titulo-container{
+    text-align:center;
+    transform:translateY(-10px);
+}
+
+.titulo-container h1{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(55px,8vw,130px);
+    font-weight:900;
+    color:var(--preto);
+    line-height:1;
+    letter-spacing:-4px;
+    -webkit-text-stroke:1px var(--preto);
+}
+
+.subtitulo{
+    margin-top:18px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--preto);
+}
+
+.rolar{
+    position:absolute;
+    bottom:95px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:2px;
+    color:var(--preto);
+    animation:flutuar 2s infinite;
+}
+
+@keyframes flutuar{
+    0%,100%{
+        transform:translate(-50%,0);
+    }
+    50%{
+        transform:translate(-50%,8px);
+    }
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.secao{
+    min-height:100vh;
+    padding:120px 10%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.secao h2{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(50px,7vw,110px);
+    font-weight:900;
+    margin-bottom:30px;
+    letter-spacing:-3px;
+}
+
+.secao p{
+    max-width:700px;
+    font-size:16px;
+    line-height:1.8;
+}
+
+#historia{
+    background:var(--vermelho-principal);
+    color:var(--preto);
+}
+
+#cantos{
+    background:var(--vermelho-claro);
+    color:var(--preto);
+}
+
+#politica{
+    background:var(--vermelho-escuro);
+    color:var(--creme);
+}
+
+#projetos{
+    background:var(--vinho);
+    color:var(--creme);
+}
+
+/* =========================
+   ELEMENTOS EDITORIAIS
+========================= */
+
+.secao-topo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:35px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.numero-secao{
+    font-family:"Bodoni Moda",serif;
+    font-size:16px;
+}
+
+.linha{
+    width:48px;
+    height:1px;
+    background:currentColor;
+    opacity:.45;
+}
+
+.rotulo-secao{
+    opacity:.7;
+}
+
+.mini-titulo{
+    display:block;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:12px;
+    opacity:.65;
+}
+
+/* =========================
+   HISTÓRIA
+========================= */
+
+.historia-secao{
+    padding:120px 8% 150px;
+    justify-content:flex-start;
+    overflow:hidden;
+}
+
+.historia-secao>h2{
+    max-width:1100px;
+    font-size:clamp(80px,11vw,160px);
+    font-weight:900;
+    line-height:.9;
+    letter-spacing:-6px;
+    margin-top:100px;
+    margin-bottom:150px;
+}
+
+.historia-bloco{
+    width:100%;
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:30px;
+    padding:55px 0;
+    border-top:1px solid rgba(0,0,0,.25);
+    border-bottom:1px solid rgba(0,0,0,.25);
+}
+
+.bloco-numero{
+    font-family:"Bodoni Moda",serif;
+    font-size:42px;
+    line-height:1;
+    opacity:.55;
+}
+
+.historia-bloco h3,
+.tempo-item h3,
+.tradioes-intro h3,
+.terreiro h3,
+.mitos h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(35px,4vw,58px);
+    font-weight:800;
+    line-height:1.02;
+    margin-bottom:22px;
+    -webkit-text-stroke:.4px currentColor;
+}
+
+.historia-bloco p,
+.tempo-item p,
+.tradioes-intro p,
+.terreiro p,
+.mitos p,
+.tradicao-card p{
+    max-width:820px;
+    font-size:15px;
+    line-height:1.85;
+    margin-bottom:15px;
+}
+
+.linha-tempo{
+    position:relative;
+    margin:75px 0;
+    padding-left:0;
+    border-left:none;
+}
+
+.tempo-item{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    padding:15px 0 65px;
+}
+
+.tempo-marca{
+    display:none;
+}
+
+/* =========================
+   TRADIÇÕES
+========================= */
+
+.cards-tradicoes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    margin-bottom:100px;
+}
+
+.tradicao-card{
+    min-height:430px;
+    padding:38px 32px;
+    background:rgba(0,0,0,.07);
+    border:1px solid rgba(0,0,0,.12);
+    display:flex;
+    flex-direction:column;
+}
+
+.tradicao-card:hover{
+    background:rgba(0,0,0,.12);
+    transform:translateY(-5px);
+    transition:.3s ease;
+}
+
+.card-numero{
+    font-family:"Bodoni Moda",serif;
+    font-size:28px;
+    margin-bottom:35px;
+    opacity:.45;
+}
+
+.tradicao-card h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.lista-divindades{
+    margin-top:auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.lista-divindades span{
+    border:1px solid rgba(0,0,0,.25);
+    padding:7px 10px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.divindade{
+    position:relative;
+    cursor:pointer;
+}
+
+.divindade::after{
+    content:attr(data-descricao);
+    position:absolute;
+    bottom:calc(100% + 16px);
+    left:50%;
+    transform:translateX(-50%) translateY(8px);
+    width:min(260px,calc(100vw - 30px));
+    padding:16px 18px;
+    background:var(--vermelho-escuro);
+    color:var(--creme);
+    border:1px solid rgba(0,0,0,.18);
+    border-radius:14px;
+    font-family:"Montserrat",sans-serif;
+    font-size:clamp(10px,.75vw,12px);
+    line-height:1.6;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,transform .25s ease;
+    z-index:100;
+}
+
+.divindade:hover::after{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+}
+
+.divindade:hover{
+    transform:scale(1.12);
+    z-index:10;
+}
+
+/* =========================
+   TERREIRO
+========================= */
+
+.rio-grande{
+    margin-bottom:90px;
+}
+
+.terreiro{
+    padding:80px 0;
+    border-top:1px solid rgba(0,0,0,.25);
+    border-bottom:1px solid rgba(0,0,0,.25);
+}
+
+.terreiro-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:45px;
+    margin-top:60px;
+}
+
+.terreiro-grid>div{
+    border-top:1px solid rgba(0,0,0,.3);
+    padding-top:20px;
+}
+
+.indice{
+    font-family:"Bodoni Moda",serif;
+    font-size:25px;
+    opacity:.45;
+}
+
+.terreiro-grid h4{
+    font-family:"Bodoni Moda",serif;
+    font-size:27px;
+    margin:12px 0;
+}
+
+/* =========================
+   MITOS
+========================= */
+
+.mitos{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:90px;
+    padding:110px 0 70px;
+}
+
+.mitos-lista details{
+    border-top:1px solid rgba(0,0,0,.3);
+    padding:20px 0;
+}
+
+.mitos-lista details:last-child{
+    border-bottom:1px solid rgba(0,0,0,.3);
+}
+
+.mitos-lista summary{
+    cursor:pointer;
+    list-style:none;
+    font-family:"Bodoni Moda",serif;
+    font-size:24px;
+    padding-right:25px;
+    -webkit-text-stroke:.2px currentColor;
+}
+
+.mitos-lista summary::-webkit-details-marker{
+    display:none;
+}
+
+.mitos-lista summary::after{
+    content:"+";
+    float:right;
+    font-family:"Montserrat",sans-serif;
+    font-size:20px;
+    font-weight:400;
+}
+
+.mitos-lista details[open] summary::after{
+    content:"−";
+}
+
+.mitos-lista p{
+    margin-top:18px;
+    max-width:700px;
+    font-size:14px;
+}
+
+.fechamento{
+    padding:100px 0 20px;
+    text-align:center;
+}
+
+.fechamento h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(30px,4vw,55px);
+    line-height:1.1;
+    margin:30px auto;
+    max-width:950px;
+    -webkit-text-stroke:.3px currentColor;
+}
+
+.fechamento-linha{
+    display:block;
+    width:70px;
+    height:1px;
+    background:currentColor;
+    margin:35px auto 0;
+    opacity:.5;
+}
+
+/* =========================
+   POLÍTICA
+========================= */
+
+.politica-secao{
+    padding:120px 8% 150px;
+    justify-content:flex-start;
+    overflow:hidden;
+}
+
+.politica-secao>h2{
+    max-width:1100px;
+    font-size:clamp(80px,11vw,160px);
+    font-weight:900;
+    line-height:.9;
+    letter-spacing:-6px;
+    margin-top:100px;
+    margin-bottom:150px;
+}
+
+.politica-bloco{
+    width:100%;
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:30px;
+    padding:55px 0;
+    border-top:1px solid rgba(255,107,107,.35);
+    border-bottom:1px solid rgba(255,107,107,.35);
+}
+
+.politica-bloco h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(35px,4vw,58px);
+    font-weight:800;
+    line-height:1.02;
+    margin-bottom:22px;
+    -webkit-text-stroke:.4px currentColor;
+}
+
+.politica-bloco p{
+    max-width:820px;
+    font-size:15px;
+    line-height:1.85;
+    margin-bottom:15px;
+}
+
+.politica-lista{
+    max-width:820px;
+    margin:20px 0 15px;
+    padding-left:22px;
+}
+
+.politica-lista li{
+    font-size:15px;
+    line-height:1.85;
+    padding-left:5px;
+}
+
+.politica-destaque{
+    margin:80px 0;
+    padding:60px 0;
+    border-top:1px solid rgba(255,107,107,.35);
+    border-bottom:1px solid rgba(255,107,107,.35);
+}
+
+.politica-destaque h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(38px,5vw,70px);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.politica-destaque p{
+    max-width:820px;
+    font-size:15px;
+    line-height:1.85;
+}
+
+.politica-fechamento{
+    padding:100px 0 20px;
+    text-align:center;
+}
+
+.politica-fechamento h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(30px,4vw,55px);
+    line-height:1.1;
+    max-width:950px;
+    margin:30px auto;
+}
+
+
+/* ==================================================
+   PROJETOS
+================================================== */
+
+.projetos-secao{
+    padding:120px 8% 150px;
+    justify-content:flex-start;
+    overflow:hidden;
+}
+
+.projetos-secao>h2{
+    max-width:1100px;
+    font-size:clamp(80px,11vw,160px);
+    font-weight:900;
+    line-height:.9;
+    letter-spacing:-6px;
+    margin-top:100px;
+    margin-bottom:45px;
+}
+
+.projetos-intro{
+    max-width:820px;
+    margin-bottom:100px;
+}
+
+.projetos-intro p{
+    max-width:820px;
+    font-size:15px;
+    line-height:1.85;
+    margin-bottom:15px;
+}
+
+.projetos-legenda{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:25px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.projetos-legenda .linha{
+    width:48px;
+    height:1px;
+    background:currentColor;
+    opacity:.45;
+}
+
+
+/* GRID */
+
+.projetos-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
+}
+
+
+/* CARD */
+
+.projeto-card{
+    position:relative;
+    min-height:590px;
+    background:#000;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    color:var(--creme);
+}
+
+.projeto-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.72;
+    transition:
+        transform .6s ease,
+        opacity .6s ease;
+}
+
+.projeto-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.95) 0%,
+            rgba(0,0,0,.72) 38%,
+            rgba(0,0,0,.08) 100%
+        );
+}
+
+.projeto-card:hover img{
+    transform:scale(1.06);
+    opacity:.9;
+}
+
+.projeto-conteudo{
+    position:relative;
+    z-index:2;
+    padding:38px;
+}
+
+.projeto-numero{
+    font-family:"Bodoni Moda",serif;
+    font-size:24px;
+    opacity:.6;
+    margin-bottom:20px;
+}
+
+.projeto-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:18px;
+}
+
+.projeto-meta span{
+    border:1px solid rgba(255,107,107,.65);
+    padding:7px 10px;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.projeto-card h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(32px,3.3vw,52px);
+    line-height:1;
+    margin-bottom:18px;
+    max-width:700px;
+    -webkit-text-stroke:.3px currentColor;
+}
+
+.projeto-card p{
+    max-width:650px;
+    font-size:13px;
+    line-height:1.75;
+    color:#fff;
+    margin-bottom:22px;
+}
+
+.projeto-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    color:var(--creme);
+    text-decoration:none;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(255,107,107,.7);
+    padding-bottom:7px;
+    transition:.3s ease;
+}
+
+.projeto-link:hover{
+    color:var(--vermelho-claro);
+    gap:18px;
+}
+
+
+/* FINAL */
+
+.projetos-final{
+    padding:110px 0 20px;
+    text-align:center;
+}
+
+.projetos-final h3{
+    font-family:"Bodoni Moda",serif;
+    font-size:clamp(30px,4vw,55px);
+    line-height:1.1;
+    max-width:900px;
+    margin:30px auto;
+}
+
+.projetos-final p{
+    max-width:650px;
+    margin:0 auto;
+    font-size:13px;
+    line-height:1.8;
+    opacity:.75;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:800px){
+
+    .historia-secao,
+    .politica-secao,
+    .projetos-secao{
+        padding:100px 8% 120px;
+    }
+
+    .historia-bloco,
+    .politica-bloco{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .cards-tradicoes,
+    .terreiro-grid,
+    .mitos,
+    .projetos-grid{
+        grid-template-columns:1fr;
+    }
+
+    .mitos{
+        gap:55px;
+    }
+
+    .projetos-secao>h2{
+        font-size:48px;
+        letter-spacing:-2px;
+        margin-top:60px;
+        margin-bottom:35px;
+    }
+
+    .projetos-intro{
+        margin-bottom:65px;
+    }
+
+    .projeto-card{
+        min-height:560px;
+    }
+
+    .projeto-conteudo{
+        padding:28px;
+    }
+}
+
+@media(max-width:600px){
+
+    .menu{
+        height:60px;
+    }
+
+    .menu ul{
+        gap:12px;
+        padding:0 10px;
+        justify-content:space-around;
+    }
+
+    .menu a{
+        font-size:8px;
+        letter-spacing:.3px;
+    }
+
+    .titulo-container h1{
+        font-size:52px;
+        letter-spacing:-2px;
+    }
+
+    .subtitulo{
+        font-size:8px;
+        letter-spacing:.7px;
+    }
+
+    .historia-secao>h2,
+    .politica-secao>h2{
+        font-size:48px;
+    }
+
+    .secao{
+        padding:100px 8%;
+    }
+
+    .tradicao-card{
+        min-height:auto;
+    }
+
+    .lista-divindades{
+        margin-top:25px;
+    }
+
+    .politica-lista{
+        padding-left:20px;
+    }
+
+    .politica-bloco{
+        grid-template-columns:1fr;
+    }
+
+    .projeto-card{
+        min-height:540px;
+    }
+
+    .projeto-card h3{
+        font-size:34px;
+    }
+
+    .projeto-card p{
+        font-size:12px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     MENU
+========================= -->
+
+<nav class="menu">
+<ul>
+<li><a href="#historia">História</a></li>
+<li><a href="#cantos">Cantos</a></li>
+<li><a href="#politica">Política</a></li>
+<li><a href="#projetos">Projetos</a></li>
+</ul>
+</nav>
+
+
+<!-- =========================
+     INÍCIO
+========================= -->
+
+<section class="inicio">
+
+<div class="titulo-container">
+
+<h1>RELIGIÃO</h1>
+
+<p class="subtitulo">
+RELIGIÃO AFRICANA NAÇÃO E UMBANDA
+</p>
+
+</div>
+
+<div class="rolar">
+ROLE PARA CONTINUAR
+</div>
+
+</section>
+
+
+<!-- =========================
+     HISTÓRIA
+========================= -->
+
+<section id="historia" class="secao historia-secao">
+
+<h2>História</h2>
+
+
+<div class="historia-bloco">
+
+<div class="bloco-numero">01</div>
+
+<div>
+
+<span class="mini-titulo">ORIGENS</span>
+
+<h3>
+As tradições religiosas na África
+</h3>
+
+<p>
+Antes da chegada dos portugueses ao território brasileiro, a África já reunia uma enorme diversidade de povos, reinos, cidades, línguas, culturas e tradições religiosas.
+</p>
+
+<p>
+Não existia uma única “religião africana”: iorubás, jejes e diferentes povos bantu, entre muitos outros, possuíam suas próprias formas de compreender o mundo, a natureza, a comunidade, os ancestrais e o sagrado.
+</p>
+
+<p>
+Muitos desses conhecimentos eram transmitidos pela oralidade. Histórias, ensinamentos, cantos, provérbios, mitos e conhecimentos religiosos passavam de geração em geração, preservando a memória e a identidade das comunidades.
+</p>
+
+</div>
+</div>
+
+
+<div class="linha-tempo">
+
+<div class="tempo-item">
+
+<div>
+
+<h3>
+A escravização e a chegada ao Brasil
+</h3>
+
+<p>
+A chegada de africanos ao Brasil ocorreu no contexto da expansão marítima europeia e da colonização portuguesa das Américas. A partir do século XVI, o território brasileiro passou a integrar o sistema atlântico de tráfico de pessoas escravizadas, que transportou milhões de africanos à força para as Américas.
+</p>
+
+<p>
+Os africanos trazidos para o Brasil não pertenciam a um único povo ou região. Eram provenientes de diferentes partes da África e possuíam línguas, culturas, organizações sociais e tradições religiosas diversas.
+</p>
+
+<p>
+A escravização também foi marcada por tentativas de controlar, proibir e destruir essas culturas. Mesmo assim, muitas tradições sobreviveram e foram transmitidas entre gerações.
+</p>
+
+</div>
+</div>
+
+
+<div class="tempo-item">
+
+<div>
+
+<h3>
+Preservação cultural
+</h3>
+
+<p>
+Como eram proibidos de praticar livremente muitas de suas religiões, os africanos precisaram adaptar e preservar suas tradições de diferentes formas. Em alguns lugares, elementos de suas crenças foram associados ao catolicismo, dando origem a processos de sincretismo religioso.
+</p>
+
+<p>
+Com o passar do tempo, essas tradições deram origem e contribuíram para religiões afro-brasileiras, como o Candomblé, além de influenciarem posteriormente a Umbanda e diversas manifestações culturais brasileiras.
+</p>
+
+</div>
+</div>
+
+
+<div class="tempo-item">
+
+<div>
+
+<h3>
+As religiões afro-brasileiras
+</h3>
+
+<p>
+É importante destacar que a expressão “religiões afro-brasileiras” engloba diferentes tradições e não representa uma religião única. Entre elas estão o Candomblé, a Umbanda, o Batuque, o Tambor de Mina, o Xangô do Nordeste, entre outras manifestações que apresentam histórias, práticas, divindades e formas de organização próprias.
+</p>
+
+<p>
+O Candomblé, por exemplo, reúne diferentes tradições e nações religiosas, entre elas as de origem iorubá, jeje e banto. A Umbanda, por sua vez, desenvolveu-se no Brasil a partir de diferentes influências religiosas e culturais, apresentando características próprias.
+</p>
+
+<p>
+Assim, compreender as religiões afro-brasileiras significa reconhecer sua diversidade e sua importância histórica. Elas não representam apenas uma herança do passado, mas tradições vivas, continuamente transmitidas e recriadas por suas comunidades.
+</p>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- DIVINDADES -->
+
+<div class="tradioes-intro">
+
+<span class="mini-titulo">
+DIVINDADES RELIGIOSAS
+</span>
+
+<h3>
+DIVINDADES RELIGIOSAS
+</h3>
+
+<p>
+Diferentes povos possuem diferentes sistemas religiosos, divindades, cosmologias e formas de culto. Essa diversidade continua presente nas religiões de matriz africana.
+</p>
+
+</div>
+
+
+<div class="cards-tradicoes">
+
+
+<article class="tradicao-card">
+
+<span class="card-numero">01</span>
+
+<span class="mini-titulo">
+TRADIÇÕES IORUBÁS
+</span>
+
+<h3>
+Orixás
+</h3>
+
+<p>
+Entre diversos povos de língua iorubá existem tradições relacionadas aos Orixás, divindades associadas a diferentes aspectos da existência, da natureza e da vida humana.
+</p>
+
+<div class="lista-divindades">
+
+<span class="divindade" data-descricao="Relacionado aos caminhos, à comunicação, ao movimento e às relações.">
+Exu
+</span>
+
+<span class="divindade" data-descricao="Relacionado ao ferro, às ferramentas, ao trabalho e à abertura de caminhos.">
+Ogum
+</span>
+
+<span class="divindade" data-descricao="Associado à caça, às matas e à busca pelo conhecimento e sustento.">
+Odé
+</span>
+
+<span class="divindade" data-descricao="Relacionado ao trovão, ao fogo, ao poder e à justiça.">
+Xangô
+</span>
+
+<span class="divindade" data-descricao="Associada aos ventos, às tempestades e às transformações.">
+Oyá
+</span>
+
+<span class="divindade" data-descricao="Relacionada às águas doces, à fertilidade, à beleza e à prosperidade.">
+Oxum
+</span>
+
+<span class="divindade" data-descricao="Associada às águas e, em muitas tradições brasileiras, ao mar.">
+Iemanjá
+</span>
+
+<span class="divindade" data-descricao="Associado à criação e a aspectos de grande importância em diferentes tradições iorubás.">
+Oxalá
+</span>
+
+</div>
+
+</article>
+
+
+<article class="tradicao-card">
+
+<span class="card-numero">02</span>
+
+<span class="mini-titulo">
+TRADIÇÕES JEJES
+</span>
+
+<h3>
+Voduns
+</h3>
+
+<p>
+Entre diferentes povos chamados de jejes, especialmente em regiões que hoje correspondem principalmente ao Benim e ao Togo, existem tradições religiosas relacionadas aos Voduns.
+</p>
+
+<div class="lista-divindades">
+
+<span class="divindade" data-descricao="Associado à criação e a aspectos do universo em determinadas tradições.">
+Mawu
+</span>
+
+<span class="divindade" data-descricao="Associado a aspectos complementares da cosmologia em algumas tradições.">
+Lisa
+</span>
+
+<span class="divindade" data-descricao="Relacionado às ruas, ao dinheiro, aos mercados e à fala em determinadas tradições.">
+Elebá
+</span>
+
+<span class="divindade" data-descricao="Relacionado ao ferro, à agricultura, às armas, à caça e à guerra.">
+Gú
+</span>
+
+<span class="divindade" data-descricao="Associado ao raio e a fenômenos da natureza, como chuva, tempestades e fogo.">
+Sobô
+</span>
+
+<span class="divindade" data-descricao="Associado à terra e às doenças, possuindo diferentes interpretações e formas de culto.">
+Sakpata
+</span>
+
+<span class="divindade" data-descricao="Relacionada à vida e à morte e de grande importância em determinadas tradições.">
+Nánà
+</span>
+
+</div>
+
+</article>
+
+
+<article class="tradicao-card">
+
+<span class="card-numero">03</span>
+
+<span class="mini-titulo">
+TRADIÇÕES BANTU
+</span>
+
+<h3>
+Minkisi
+</h3>
+
+<p>
+“Bantu” não representa um único povo. O termo reúne diversos povos relacionados principalmente por famílias linguísticas. Em algumas dessas tradições encontramos os Minkisi, importantes especialmente no Candomblé Angola e Congo.
+</p>
+
+<div class="lista-divindades">
+
+<span class="divindade" data-descricao="Conceito relacionado à divindade suprema em determinadas tradições bantu.">
+Nzambi/Nzambi Mpungu
+</span>
+
+<span class="divindade" data-descricao="Associado ao trovão e ao fogo em algumas tradições.">
+Nzazi
+</span>
+
+<span class="divindade" data-descricao="Relacionado ao tempo e a aspectos da natureza em determinadas tradições.">
+Kitembo/Tempo
+</span>
+
+<span class="divindade" data-descricao="Associado à terra e a aspectos relacionados à saúde e às doenças.">
+Kavungo
+</span>
+
+<span class="divindade" data-descricao="Relacionado à caça e às matas em tradições Angola.">
+Mutalambô
+</span>
+
+<span class="divindade" data-descricao="Associado às folhas e aos conhecimentos relacionados às plantas.">
+Katendê
+</span>
+
+</div>
+
+</article>
+
+</div>
+
+
+<!-- RIO GRANDE DO SUL -->
+
+<div class="historia-bloco rio-grande">
+
+<div class="bloco-numero">
+RS
+</div>
+
+<div>
+
+<h3>
+Uma religiosidade afro-gaúcha
+</h3>
+
+<p>
+No Rio Grande do Sul, as tradições africanas encontraram diferentes influências culturais e desenvolveram formas próprias de religiosidade. Destaca-se o <strong>Batuque</strong>, tradição de matriz africana que se consolidou especialmente em Porto Alegre e na região metropolitana.
+</p>
+
+<p>
+Posteriormente, a Umbanda também ganhou grande presença no estado, reunindo elementos de origem africana, indígena, católica e espírita.
+</p>
+
+</div>
+</div>
+
+
+<!-- TERREIRO -->
+
+<div class="terreiro">
+
+<div class="terreiro-cabecalho">
+
+<h3>
+O terreiro
+</h3>
+
+<p>
+O terreiro é mais do que um espaço físico. É um espaço religioso e comunitário onde pessoas se reúnem para praticar sua fé, realizar cerimônias, transmitir conhecimentos e preservar tradições.
+</p>
+
+</div>
+
+
+<div class="terreiro-grid">
+
+<div>
+
+<span class="indice">01</span>
+
+<h4>
+Quem pode entrar?
+</h4>
+
+<p>
+Não existe uma regra única para todos os terreiros. Algumas cerimônias são abertas ao público, enquanto outras são mais reservadas. Por isso, antes de visitar, é importante se informar sobre as regras do local.
+</p>
+
+</div>
+
+
+<div>
+
+<span class="indice">02</span>
+
+<h4>
+O que acontece?
+</h4>
+
+<p>
+Dependendo da comunidade, podem existir cantos, toques de tambores, danças, orações, saudações, oferendas, celebrações e rituais específicos.
+</p>
+
+</div>
+
+
+<div>
+
+<span class="indice">03</span>
+
+<h4>
+Família religiosa
+</h4>
+
+<p>
+Para muitos membros, o terreiro também representa uma família religiosa, construída por vínculos de respeito, cuidado, aprendizado e pertencimento.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MITOS -->
+
+<div class="mitos">
+
+<div class="mitos-intro">
+
+<h3>
+Mitos, preconceitos<br>
+e realidade.
+</h3>
+
+<p>
+Muitas ideias sobre terreiros, Orixás, oferendas e rituais foram construídas a partir de preconceitos e interpretações externas às próprias tradições.
+</p>
+
+</div>
+
+
+<div class="mitos-lista">
+
+<details>
+
+<summary>
+Toda oferenda é feita para prejudicar alguém?
+</summary>
+
+<p>
+Essa é uma das ideias mais comuns e também uma das mais simplificadoras. Oferendas podem possuir diferentes significados religiosos, como agradecimento, homenagem, pedido, obrigação religiosa, manutenção de vínculos com o sagrado e celebração. Seu significado depende da tradição e do contexto.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Religiões de matriz africana cultuam o diabo?
+</summary>
+
+<p>
+Essa ideia está relacionada principalmente à associação histórica de divindades e entidades africanas com conceitos cristãos de demônio. As religiões de matriz africana possuem cosmologias próprias. O conceito cristão de “Diabo” não pode simplesmente ser colocado sobre Orixás, Voduns ou Minkisi.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Exu é o demônio?
+</summary>
+
+<p>
+Nas tradições de matriz iorubá, Exu é uma divindade própria de sua cosmologia, relacionada, entre outros aspectos, aos caminhos, movimento, comunicação e às relações. A representação de Exu como “demônio” é resultado de uma interpretação que utiliza categorias cristãs para explicar uma tradição diferente.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Toda pessoa de terreiro faz magia?
+</summary>
+
+<p>
+Praticantes de religiões de matriz africana não podem ser definidos simplesmente como pessoas que “fazem magia”. Existem diferentes práticas, funções e formas de viver a espiritualidade, incluindo culto, oração, ancestralidade, música, comunidade, rituais, festividades e aprendizado.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Terreiro é lugar de fazer maldade?
+</summary>
+
+<p>
+Essa ideia é alimentada por estereótipos. Um terreiro é um espaço religioso e comunitário onde podem existir cerimônias, ensinamentos, festas, relações familiares religiosas, transmissão de conhecimento e práticas de culto.
+</p>
+
+</details>
+
+</div>
+
+</div>
+
+
+<div class="fechamento">
+
+<h3>
+Conhecer não significa precisar seguir uma religião.<br>
+Significa compreender antes de julgar.
+</h3>
+
+<span class="fechamento-linha"></span>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CANTOS
+========================= -->
+
+<section id="cantos" class="secao">
+
+<h2>
+Cantos
+</h2>
+
+<p>
+Aqui será colocado o conteúdo relacionado aos cantos.
+</p>
+
+</section>
+
+
+<!-- =========================
+     POLÍTICA
+========================= -->
+
+<section id="politica" class="secao politica-secao">
+
+<h2>
+Política
+</h2>
+
+
+<div class="politica-bloco">
+
+<div class="bloco-numero">
+01
+</div>
+
+<div>
+
+<span class="mini-titulo">
+LIBERDADE RELIGIOSA
+</span>
+
+<h3>
+Direitos, cidadania e participação social
+</h3>
+
+<p>
+Falar sobre religiões de matriz africana também significa falar sobre <strong>direitos, cidadania e participação social</strong>.
+</p>
+
+<p>
+Durante grande parte da história brasileira, essas religiões foram perseguidas, marginalizadas e tratadas de maneira desigual. Mesmo depois do fim da escravidão, práticas religiosas de origem africana continuaram enfrentando preconceito, repressão e estigmatização.
+</p>
+
+<p>
+Por isso, a relação entre os terreiros e a política não precisa ser entendida como uma questão partidária. Ela está relacionada principalmente à <strong>defesa da liberdade religiosa, da igualdade, da cultura e dos direitos das comunidades tradicionais</strong>.
+</p>
+
+<p>
+No Brasil, a liberdade de consciência e de crença é um direito fundamental. A Constituição Federal estabelece que é inviolável a liberdade de consciência e de crença e garante o livre exercício dos cultos religiosos, além da proteção aos locais de culto e às suas liturgias.
+</p>
+
+<p>
+Isso significa que uma pessoa não pode ser discriminada simplesmente por pertencer a uma determinada religião. O direito à liberdade religiosa também protege as comunidades de terreiro e seus espaços de culto.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="politica-bloco">
+
+<div class="bloco-numero">
+02
+</div>
+
+<div>
+
+<span class="mini-titulo">
+INTOLERÂNCIA RELIGIOSA
+</span>
+
+<h3>
+Quando a diferença se transforma em violência
+</h3>
+
+<p>
+A intolerância religiosa acontece quando uma pessoa ou grupo sofre hostilidade, discriminação ou violência por causa de sua religião. Ela pode aparecer de diferentes maneiras:
+</p>
+
+<ul class="politica-lista">
+
+<li>Ofensas;</li>
+<li>Ameaças;</li>
+<li>Humilhações;</li>
+<li>Perseguição;</li>
+<li>Destruição de símbolos religiosos;</li>
+<li>Ataques a terreiros;</li>
+<li>Impedimento de práticas religiosas;</li>
+<li>Discriminação no trabalho ou na escola;</li>
+<li>Violência física.</li>
+
+</ul>
+
+<p>
+Nem toda discordância religiosa constitui crime. O problema surge quando a manifestação ultrapassa os limites da liberdade de expressão e passa a envolver discriminação, perseguição, violência ou impedimento do exercício religioso.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="politica-bloco">
+
+<div class="bloco-numero">
+03
+</div>
+
+<div>
+
+<span class="mini-titulo">
+RACISMO RELIGIOSO
+</span>
+
+<h3>
+Religião, raça e cultura
+</h3>
+
+<p>
+No caso das religiões de matriz africana, existe uma questão que vai além da simples intolerância religiosa. Muitas manifestações de preconceito contra essas religiões estão relacionadas também ao <strong>racismo e à desvalorização de culturas de origem africana</strong>.
+</p>
+
+<p>
+Por isso, utiliza-se o termo <strong>racismo religioso</strong> para destacar a relação entre a discriminação religiosa e a dimensão racial e cultural que historicamente atingiu essas comunidades.
+</p>
+
+<p>
+A legislação brasileira passou a tratar expressamente do racismo religioso. A Lei nº 14.532/2023 alterou a Lei nº 7.716/1989 e incluiu previsões relacionadas ao racismo praticado em contexto religioso.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="politica-bloco">
+
+<div class="bloco-numero">
+04
+</div>
+
+<div>
+
+<span class="mini-titulo">
+DIREITOS DOS TERREIROS
+</span>
+
+<h3>
+Espaços religiosos também possuem direitos
+</h3>
+
+<p>
+Um terreiro é, além de um espaço religioso, uma comunidade que possui direitos.
+</p>
+
+<p>
+Entre esses direitos está a possibilidade de realizar suas práticas religiosas dentro dos limites estabelecidos pela legislação, manter seu espaço de culto e organizar sua comunidade.
+</p>
+
+<p>
+Isso não significa que um terreiro esteja acima das leis. Assim como qualquer outro espaço, deve respeitar normas aplicáveis de segurança, saúde, meio ambiente, urbanismo e convivência.
+</p>
+
+<p>
+O desafio está justamente em equilibrar <strong>liberdade religiosa, direitos de terceiros e cumprimento da legislação</strong>.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="politica-destaque">
+
+<span class="mini-titulo">
+RIO GRANDE DO SUL
+</span>
+
+<h3>
+A questão no Rio Grande do Sul
+</h3>
+
+<p>
+No Rio Grande do Sul, a discussão sobre os direitos dos povos de terreiro também envolve a relação dessas comunidades com o poder público.
+</p>
+
+<p>
+Em 2025, por exemplo, o Conselho Municipal do Povo de Terreiro de Rio Grande discutiu com representantes da segurança pública, Judiciário e poder público questões relacionadas às abordagens policiais e denúncias envolvendo práticas religiosas.
+</p>
+
+<p>
+Em 2026, a Prefeitura de Rio Grande também promoveu encontros voltados a orientar terreiros sobre o acesso à <strong>Política Nacional Cultura Viva</strong>.
+</p>
+
+<p>
+Esses exemplos mostram que a relação entre terreiros e poder público não se resume à questão religiosa. Ela envolve também <strong>cultura, segurança, direitos humanos, participação social e políticas públicas</strong>.
+</p>
+
+</div>
+
+
+<div class="politica-fechamento">
+
+<h3>
+Liberdade religiosa não é privilégio.<br>
+É um direito.
+</h3>
+
+<span class="fechamento-linha"></span>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     PROJETOS — RIO GRANDE DO SUL
+================================================== -->
+
+<section id="projetos" class="secao projetos-secao">
+
+
+<div class="secao-topo">
+
+<span class="numero-secao">
+04
+</span>
+
+<span class="linha"></span>
+
+<span class="rotulo-secao">
+CULTURA AFRO-BRASILEIRA NO RS
+</span>
+
+</div>
+
+
+<h2>
+Projetos
+</h2>
+
+
+<div class="projetos-intro">
+
+<div class="projetos-legenda">
+
+<span>
+INICIATIVAS QUE PRESERVAM
+</span>
+
+<span class="linha"></span>
+
+</div>
+
+
+<p>
+A cultura afro-brasileira no Rio Grande do Sul é preservada e fortalecida por diferentes projetos, instituições, coletivos e comunidades.
+</p>
+
+<p>
+Essas iniciativas atuam em áreas como memória, educação, patrimônio, música, carnaval, capoeira, arte e valorização da identidade negra.
+</p>
+
+<p>
+Conheça alguns projetos que contribuem para manter vivas essas histórias e manifestações culturais.
+</p>
+
+</div>
+
+
+<div class="projetos-grid">
+
+
+<!-- ==================================================
+     PROJETO 01
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://cultura.rs.gov.br/upload/arquivos/cargaWp20170903/27110337-fica-ahi-pedro-1.jpg"
+alt="Clube Cultural Fica Ahi em Pelotas">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+01
+</div>
+
+<div class="projeto-meta">
+
+<span>
+PELOTAS
+</span>
+
+<span>
+MEMÓRIA
+</span>
+
+<span>
+PATRIMÔNIO
+</span>
+
+</div>
+
+<h3>
+Clube Cultural Fica Ahi
+</h3>
+
+<p>
+O Clube Cultural Fica Ahi Pra Ir Dizendo é um importante espaço de memória e organização da comunidade negra de Pelotas. Projetos desenvolvidos em torno do clube buscam preservar seu acervo, registrar suas memórias e valorizar sua trajetória cultural.
+</p>
+
+<a
+class="projeto-link"
+href="https://institucional.ufpel.edu.br/projetos/id/u1208"
+target="_blank"
+rel="noopener noreferrer">
+
+CONHECER O PROJETO →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ==================================================
+     PROJETO 02
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://cultura.rs.gov.br/upload/arquivos/cargaWp20170903/27110337-fica-ahi-pedro-1.jpg"
+alt="Museu Afro-Brasil-Sul">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+02
+</div>
+
+<div class="projeto-meta">
+
+<span>
+PELOTAS
+</span>
+
+<span>
+EDUCAÇÃO
+</span>
+
+<span>
+ANTIRRACISMO
+</span>
+
+</div>
+
+<h3>
+Museu Afro-Brasil-Sul
+</h3>
+
+<p>
+O MABSul, ligado à Universidade Federal de Pelotas, trabalha para identificar, preservar, pesquisar e divulgar o patrimônio material e imaterial afro-brasileiro da região Sul. Seu acervo reúne temas como arte, carnaval, clubes sociais, educação, quilombos e religiosidade.
+</p>
+
+<a
+class="projeto-link"
+href="https://acervosvirtuais.ufpel.edu.br/museuafrobrasilsul/"
+target="_blank"
+rel="noopener noreferrer">
+
+VISITAR O MABSUL →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ==================================================
+     PROJETO 03
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://www.prefeitura.poa.br/sites/default/files/styles/horizontal_grande/http/bancodeimagens.portoalegre.rs.gov.br/sites/default/files/2024/02/21/20240221_Cesar%2520Lopes_SMCEC-33.JPG?itok=B9Sg7DxK"
+alt="Samba em Porto Alegre">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+03
+</div>
+
+<div class="projeto-meta">
+
+<span>
+PORTO ALEGRE
+</span>
+
+<span>
+SAMBA
+</span>
+
+<span>
+IDENTIDADE
+</span>
+
+</div>
+
+<h3>
+Quem Me Guia
+</h3>
+
+<p>
+O projeto “Quem Me Guia” busca fortalecer o território do samba e o protagonismo negro no bairro Partenon, em Porto Alegre, utilizando a cultura e a formação criativo-cultural como instrumentos de valorização da comunidade negra.
+</p>
+
+<a
+class="projeto-link"
+href="https://www.procultura.rs.gov.br/ver_projeto_fac.php?cod=24312"
+target="_blank"
+rel="noopener noreferrer">
+
+VER PROJETO →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ==================================================
+     PROJETO 04
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://zh.rbsdirect.com.br/imagesrc/23463722.jpg?w=700"
+alt="Cultura musical negra no Rio Grande do Sul">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+04
+</div>
+
+<div class="projeto-meta">
+
+<span>
+PELOTAS
+</span>
+
+<span>
+JAGUARÃO
+</span>
+
+<span>
+ARROIO GRANDE
+</span>
+
+</div>
+
+<h3>
+Choro Negro no Sul do Sul
+</h3>
+
+<p>
+Projeto voltado à memória, ao patrimônio e às práticas musicais negras na região Sul do Rio Grande do Sul. A iniciativa envolve Pelotas, Jaguarão e Arroio Grande, contribuindo para registrar e valorizar a presença negra na história musical da região.
+</p>
+
+<a
+class="projeto-link"
+href="https://www.procultura.rs.gov.br/ver_projeto_fac.php?cod=23929"
+target="_blank"
+rel="noopener noreferrer">
+
+VER PROJETO →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ==================================================
+     PROJETO 05
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://cultura.rs.gov.br/upload/arquivos/cargaWp20170903/27110337-fica-ahi-pedro-1.jpg"
+alt="Cultura popular afro-gaúcha">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+05
+</div>
+
+<div class="projeto-meta">
+
+<span>
+JAGUARÃO
+</span>
+
+<span>
+PELOTAS
+</span>
+
+<span>
+CULTURA POPULAR
+</span>
+
+</div>
+
+<h3>
+I Mostra de Cultura Popular Afro-Gaúcha
+</h3>
+
+<p>
+Realizada em Jaguarão e Pelotas, a mostra teve como proposta valorizar e divulgar manifestações da cultura negra no Rio Grande do Sul, destacando a diversidade da cultura popular afro-gaúcha.
+</p>
+
+<a
+class="projeto-link"
+href="https://www.procultura.rs.gov.br/ver_projeto_fac.php?cod=2217"
+target="_blank"
+rel="noopener noreferrer">
+
+VER PROJETO →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ==================================================
+     PROJETO 06
+================================================== -->
+
+<article class="projeto-card">
+
+<img
+src="https://assets.brasildefato.com.br/2024/11/image_processing20241101-3295936-omydr3.webp"
+alt="Capoeira e cultura negra no Rio Grande do Sul">
+
+<div class="projeto-conteudo">
+
+<div class="projeto-numero">
+06
+</div>
+
+<div class="projeto-meta">
+
+<span>
+PELOTAS
+</span>
+
+<span>
+CAPOEIRA
+</span>
+
+<span>
+EDUCAÇÃO
+</span>
+
+</div>
+
+<h3>
+Filhos da Roda
+</h3>
+
+<p>
+O grupo de capoeira Filhos da Roda desenvolve ações culturais e sociais em Pelotas e Capão do Leão. Entre suas iniciativas estão projetos que oferecem aulas para crianças e jovens, além de ações comunitárias e atividades relacionadas à valorização da capoeira.
+</p>
+
+<a
+class="projeto-link"
+href="https://acervosvirtuais.ufpel.edu.br/museuafrobrasilsul/mabsul/semana-dos-museus-filhos-da-roda-1/"
+target="_blank"
+rel="noopener noreferrer">
+
+CONHECER →
+
+</a>
+
+</div>
+
+</article>
+
+
+</div>
+
+
+<!-- FINAL DOS PROJETOS -->
+
+<div class="projetos-final">
+
+<span class="mini-titulo">
+MEMÓRIA • CULTURA • RESISTÊNCIA
+</span>
+
+<h3>
+Preservar uma cultura também é preservar as histórias de quem a construiu.
+</h3>
+
+<p>
+Os projetos apresentados mostram diferentes formas de valorização da presença negra e afro-brasileira no Rio Grande do Sul.
+</p>
+
+<span class="fechamento-linha"></span>
+
+</div>
+
+
+</section>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+const menu = document.querySelector(".menu");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 150){
+
+        menu.classList.add("aparecer");
+
+    }else{
+
+        menu.classList.remove("aparecer");
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
